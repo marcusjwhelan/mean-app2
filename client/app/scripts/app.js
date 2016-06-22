@@ -95,10 +95,10 @@ angular
   .filter('trusted', function ($sce) {
     return function(url) {
       if(url){
-     /*   var ur = url.replace("watch?v","embed/")+"?autoplay=true";
-      }*/
-      //console.log(url.replace("watch?v=","v/"));
-      return $sce.trustAsResourceUrl(url.replace("watch?v=","v/"));
-    }
+        // either work
+        //return $sce.trustAsResourceUrl(url.replace("watch?v=","embed/"));
+        return $sce.trustAsResourceUrl(
+          "https://youtube.com/embed/"+url.substr(url.indexOf("=")+1));
+      }
     };
   });
