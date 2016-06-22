@@ -9,8 +9,8 @@
  */
 angular.module('clientApp')// function ($scope)
   .controller('MoviesCtrl', function ($scope,Movie) {
-    // this can be $scope
-    // this is where you would make your object
-    // $object is asynchronous
+    //this places movies into the $scope of the html page
+    // $object is asynchronous   ... Check restangular
+    // getList().$object populates the list. dynamicly
     $scope.movies = Movie.getList().$object;
   });

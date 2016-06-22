@@ -1,0 +1,13 @@
+<!--tabs to put above the move and edit page-->
+<ul class="nav nav-tabs">
+    <!-- scope varialb ein view controller viewMovie = true
+    this sayd essenctiall add class active if viewMovie is true
+    so if true assign active.-->
+  <li role="presentation" ng-class="{active: viewMovie}">
+      <!--ng-href makes it able to use {{}} for model inject-->
+      <a ng-href="/#/movie/{{ movie._id }}">View</a>
+  </li>
+  <li role="presentation" ng-class="{active: editMovie}">
+      <a ng-href="/#/movie/{{ movie._id }}/edit">Edit</a>
+  </li>
+</ul>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="no-js">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -20,8 +20,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div class="containter">
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a ng-href="#">Home</a></li>
+          <li><a ng-href="#/movies">Movies</a></li>
+        </ul>
+        <h3 class="text-muted">client</h3>
+      </div>
+      <!--
         <div class="container">
           <div class="navbar-header">
 
@@ -42,18 +50,18 @@
               <li><a ng-href="#/movies">Movies</a></li>
             </ul>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 
-    <div class="container">
+    <!--<div class="container">-->
     <div ng-view=""></div>
-    </div>
+    <!--</div>-->
 
     <div class="footer">
-      <div class="container">
+      <!--<div class="container">-->
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+      <!--</div>-->
     </div>
 
 
@@ -84,6 +92,10 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/movies.js"></script>
+        <script src="scripts/controllers/movie-add.js"></script>
+        <script src="scripts/controllers/movie-view.js"></script>
+        <script src="scripts/controllers/movie-delete.js"></script>
+        <script src="scripts/controllers/movie-edit.js"></script>
         <!-- endbuild -->
 </body>
 </html>
