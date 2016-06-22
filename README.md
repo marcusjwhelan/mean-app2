@@ -48,12 +48,12 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     If you would like you can choose a nodejs template but 
     you will have to update it.
     
-'''bash
+```bash
 $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 $ sudo npm install -g grunt-cli
 $ sudo npm install -g bower
-'''
+```
     
     Also need to install mongodb. Fallow the instructions
     at mongodb to install for your system.
@@ -74,41 +74,41 @@ $ sudo npm install -g bower
 =========================================================
     In the main workspace folder or in the server folder.
     
-'''bash
+```bash
 $ mkdir data 
 $ echo 'mongod --bind_ip=$IP --dbpath=data 
     --nojournal --rest "$@"' > mongod
 $ chmod a+x mongod
-'''
+```
     
     Now in the file you added this too you can run 
     
-'''bash
+```bash
 $ ./mongod 
-'''
+```
      to run mongodb. This is for Cloud9 only. not for a 
      production server. Anyway if you turn off your project
      without turning off mongod you will need to run 
      ./mongod --repair before you can use mongodb again. 
      
- '''bash
- $ mongo
- '''
+```bash
+$ mongo
+```
      
      To use the mongo shell and create databases and 
      tables. You can see these with 
      
- '''bash
- > mongo
- > show databases
- // shows databses 
- > use <dbname>
- > show tables
- // shows table <name>s
- > db.<name>.find({})
- // displays everything in that database.
- '''
-     
+```bash
+> mongo
+> show databases
+// shows databses 
+> use <dbname>
+> show tables
+// shows table <name>s
+> db.<name>.find({})
+// displays everything in that database.
+```
+ 
 =========================================================
     
     In your main workspace you should have no files at 
@@ -116,7 +116,7 @@ $ ./mongod
     need to setup a github repository matching the name
     of this workpsace folder. 
     
-'''bash
+```bash
 $ sudo apt-get git
 $ git config --global user.name "your name"
 $ git config --global user.email "your email"
@@ -125,7 +125,7 @@ $ git remote add origin git@github.com:yourname/yourrepository.git
 $ git add . 
 $ git commit -m "commit comment"
 $ git push origin -u origin master
-'''
+```
     
 ---------------------------------------------------------
 ##### Setting up the Server API
@@ -133,11 +133,11 @@ $ git push origin -u origin master
 
     In your main empy workpspace folder.
     
-'''bash
+```bash
 $ mkdir server
 $ cd server
 $ npm init
-'''
+```
     
     After the init fallow the simple steps if you dont know
     anything about the steps just enter all the way through.
@@ -146,14 +146,14 @@ $ npm init
     Now install needed node modules for project. --save adds
     these to the package.json file.
     
-'''bash
+```bash
 $ sudo npm install --save express
 $ sudo npm install --save mongoose
 $ sudo npm install --save node-restful
 $ sudo npm install --save method-override
 $ sudo npm install --save body-parser
 $ sudo npm install --save lodash
-'''
+```
     /server/setup.js
     Now we need to add an node startup file to launch 
     the server. Right click the server file and add
@@ -185,13 +185,13 @@ $ sudo npm install --save lodash
 ###### Running the server
 ---------------------------------------------------------
     workspace/
-'''bash
+```bash
 $ ./mongod
-'''
+```
     /server
-'''bash
+```bash
 $ node setup
-'''
+```
     There will be nothing at the site because this is only 
     the api. Although you can test the api by using postman.
     url/movie 
@@ -209,7 +209,7 @@ $ node setup
     Move to the main workspace folder. Don't for get to 
     update npm to more recent version before these steps.
     
-'''bash
+```bash
 $ mkdir client
 $ cd client
 $ sudo npm install -g yo
@@ -220,7 +220,7 @@ $ echo "export NODE_PATH=$NODE_PATH:
     >> ~/.bashrc && source ~/.bashrc
 $ sudo npm install -g generator-karma generator-angular
 $ yo angular
-'''
+```
     answers for this project 
     
     yes all the way through to selecting angular includes
@@ -237,29 +237,29 @@ $ yo angular
 ###### To run the entire project
 ---------------------------------------------------------
     /
-'''bash
+```bash
 $ ./mongod
-'''
+```
 ---------------------------------------------------------
     /server
-'''bash
+```bash
 $ node setup  
-'''
+```
 ---------------------------------------------------------
     /client
     Set the localhost to the api if you are running the
     api on the same server. 
     
-'''bash
+```bash
 $ grunt serve --proxy=http://localhost:8081
-'''
+```
 ---------------------------------------------------------
 ##### Building the front end to talk to the api
 ---------------------------------------------------------
 
-'''bash
+```bash
 $ yo angular:route movies
-'''
+```
     
     This creates a controller, route, and view of movies.
     The route is created and viewable in 
@@ -280,9 +280,9 @@ $ yo angular:route movies
     -- moving ahead
     
     /client
-'''bash
+```bash
 $ bower install --save restangular
-'''
+```
     
     This will save restangular right into the index.html 
     file. To add this file you need to add to app.js in
@@ -290,9 +290,9 @@ $ bower install --save restangular
     
     In the app.js file you need to create a base url 
     
-'''javascript
+```javascript
 RestangularProvider.setBaseUrl('<yourURL>:8081');
-'''
+```
     
     I have here the line that you can see on line 19 of app.js
     but for me it points to my API nodejs server. So when 
@@ -303,7 +303,9 @@ RestangularProvider.setBaseUrl('<yourURL>:8081');
     index.js or any file name you would like an drun by using
     $ node <yourFileName>
     
-![screensho](http://i.imgur.com/kzC4uhJ.png)
+## Image of video view page    
+    
+![screenshot](http://i.imgur.com/kzC4uhJ.png)
     
 ---------------------------------------------------------
 ##### Extras
