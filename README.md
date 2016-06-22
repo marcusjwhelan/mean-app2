@@ -1,22 +1,315 @@
+# mean-app1
+-------------------------------------------------------
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=OhPFgqHz68o
+" target="_blank"><img src="http://img.youtube.com/vi/OhPFgqHz68o/0.jpg" 
+alt="Tutorial" width="240" height="180" border="10" /></a>
 
+#### Description 
+=======================================================
 
-Welcome to your Node.js project on Cloud9 IDE!
+    This project is actually from a youtube video going
+    over the uses of angular and yeoman to produce a 
+    production templated Angular app for storing your
+    favorite youtube videos. 
+    
+    With  full CRUD capabilities using a RESTful api for 
+    the backend. This is only a practice app to get 
+    acquainted with the MEAN stack and bootstrap's youtube
+    embed capabilities.
 
-This chat example showcases how to use `socket.io` with a static `express` server.
+    Below I will go through the steps of setting up the
+    entire app on cloud9(a cloud IDE for development). 
+    This IDE can also be used to SSH into your own servers
+    if you decide to pay for the IDE service. The free 
+    version lets you spin up many cloud servers in seconds.
+    
+---------------------------------------------------------
+##### Cloud 9 Setup
+=========================================================
 
-## Running the server
+    To make an account an see options or login visit
+    
+    [Cloud9](https://c9.io/)
+    
+    Once you have created an account go to your profile
+    page and select (+)Create a new workspace. On this 
+    workspace creation page uncer workspace name enter 
+    the name for your main file. 
+    Hosted workspace = for free users
+    public = for free users
+    you can clone your github repository if you would like
+    but for this I will show how to connect to git after
+    you have made a workspace.
+    Select Blank under Choose a Template 
+    press create workspace. 
+    
+    This will create a workspace for you using ubuntu 14.04.
+    If you would like you can choose a nodejs template but 
+    you will have to update it.
+    
+    '''
+    $ sudo apt-get install nodejs
+    $ sudo apt-get install npm
+    $ sudo npm install -g grunt-cli
+    $ sudo npm install -g bower
+    '''
+    
+    Also need to install mongodb. Fallow the instructions
+    at mongodb to install for your system.
+    
+    [mongodb](https://www.mongodb.com/download-center#community)
+    
+    I will show how to install mongodb for c9 during the 
+    server setup.
+    
+---------------------------------------------------------
+##### Setting up your remote connection to your Github
+=========================================================
+    
+    You can fallow the steps at githubt but to make it 
+    easier I have the steps here. 
+    
+###### Adding mongodb to Cloud 9
+=========================================================
+    In the main workspace folder or in the server folder.
+    
+    '''
+    $ mkdir data 
+    $ echo 'mongod --bind_ip=$IP --dbpath=data 
+        --nojournal --rest "$@"' > mongod
+    $ chmod a+x mongod
+    '''
+    
+    Now in the file you added this too you can run 
+    
+    '''
+    $ ./mongod 
+    '''
+     to run mongodb. This is for Cloud9 only. not for a 
+     production server. Anyway if you turn off your project
+     without turning off mongod you will need to run 
+     ./mongod --repair before you can use mongodb again. 
+     
+     '''
+     $ mongo
+     '''
+     
+     To use the mongo shell and create databases and 
+     tables. You can see these with 
+     
+     '''
+     > mongo
+     > show databases
+     // shows databses 
+     > use <dbname>
+     > show tables
+     // shows table <name>s
+     > db.<name>.find({})
+     // displays everything in that database.
+     '''
+     
+=========================================================
+    
+    In your main workspace you should have no files at 
+    this time unless you toggle hidden files. You will 
+    need to setup a github repository matching the name
+    of this workpsace folder. 
+    
+    '''
+    $ sudo apt-get git
+    $ git config --global user.name "your name"
+    $ git config --global user.email "your email"
+    $ git init
+    $ git remote add origin git@github.com:yourname/yourrepository.git
+    $ git add . 
+    $ git commit -m "commit comment"
+    $ git push origin -u origin master
+    '''
+    
+---------------------------------------------------------
+##### Setting up the Server API
+=========================================================
 
-1) Open `server.js` and start the app by clicking on the "Run" button in the top menu.
+    In your main empy workpspace folder.
+    
+    '''
+    $ mkdir server
+    $ cd server
+    $ npm init
+    '''
+    
+    After the init fallow the simple steps if you dont know
+    anything about the steps just enter all the way through.
+    This creates a package.json file.
+    
+    Now install needed node modules for project. --save adds
+    these to the package.json file.
+    
+    '''
+    $ sudo npm install --save express
+    $ sudo npm install --save mongoose
+    $ sudo npm install --save node-restful
+    $ sudo npm install --save method-override
+    $ sudo npm install --save body-parser
+    $ sudo npm install --save lodash
+    '''
+    /server/setup.js
+    Now we need to add an node startup file to launch 
+    the server. Right click the server file and add
+    file (setup.js). You can see the contents of this
+    file and their are comments explaining what is 
+    happening.
+    
+    /server/models/Movie.js
+    Create this file. Here you will see the schema for the 
+    movies that will be added to the api. Using mongoose.
+    
+    /server/models/index.js
+    Create this file. Here we will export all the models we
+    will create. This is used so if we ever need to add a 
+    model to the api we can create the model schema and 
+    then add it here to be packeged later.
+    - dependency injection in setup.js under
+        mongoose.connection.once('open',function(){
+        
+    /server/controllers/MovieController.js
+    Create this file. Information about the api controller in 
+    this file.
+    
+    /server/routes.js
+    Create this file. Here we assign moviecontroller to 
+    the movie path in our application. Routes file is
+    loaded in setup.js under the dependency injection. 
+    
+###### Running the server
+=========================================================
+    workspace/
+    
+    $ ./mongod
+    
+    /server
+    
+    $ node setup
+    
+    There will be nothing at the site because this is only 
+    the api. Although you can test the api by using postman.
+    url/movie 
+    url/movie/_id
+    
+    At postman use x-www-form-urlencoded 
+    key values are set in the schema made above. 
+    key=title       value=url
+    
+---------------------------------------------------------
+##### Setting up fornt end with Yeoman
+=========================================================
+    
+    workspace/
+    Move to the main workspace folder. Don't for get to 
+    update npm to more recent version before these steps.
+    
+    '''
+    $ mkdir client
+    $ cd client
+    $ sudo npm install -g yo
+    ERROR
+    $ yo doctor 
+    $ echo "export NODE_PATH=$NODE_PATH:
+        /home/ubuntu/.nvm/versions/node/v4.4.5/lib/node_modules" 
+        >> ~/.bashrc && source ~/.bashrc
+    $ sudo npm install -g generator-karma generator-angular
+    $ yo angular
+    
+    answers for this project 
+    
+    yes all the way through to selecting angular includes
+    select only. use spacebar to select/unselect
+    
+    angular-resource.js
+    angular-route.js
+    
+    /client/Gruntfile.js line 71
+    
+    port: 8080,
+    hostname: '0.0.0.0',
+    
+###### To run the entire project
+---------------------------------------------------------
+    /
+    
+    $ ./mongod
+---------------------------------------------------------
+    /server
+    
+    $ node setup  
+---------------------------------------------------------
+    /client
+    Set the localhost to the api if you are running the
+    api on the same server. 
+    
+    $ grunt serve --proxy=http://localhost:8081
 
-2) Alternatively you can launch the app from the Terminal:
+---------------------------------------------------------
+##### Building the front end to talk to the api
+=========================================================
 
-    $ node server.js
+    '''
+    $ yo angular:route movies
+    '''
+    
+    This creates a controller, route, and view of movies.
+    The route is created and viewable in 
+    /client/app/scripts/app.js
+    The controller is in 
+    /client/app/scripts/controllers/movies.js
+    and the view is in 
+    /client/app/views/movies.html
+    
+    Obviously many of the yeoman starter page is removed
+    so take a look at my files and see what was taken away
+    and what has been added. If you see a matching view
+    and controller then I used yo angular:route <name>.
+    
+    Also that command also creates a test file in 
+    /client/test/spec/controllers/<name>.js
+    
+    -- moving ahead
+    
+    /client
+    '''
+    $ bower install --save restangular
+    '''
+    
+    This will save restangular right into the index.html 
+    file. To add this file you need to add to app.js in
+    /client/app/app.js 
+    
+    In the app.js file you need to create a base url 
+    
+    '''
+    RestangularProvider.setBaseUrl('<yourURL>:8081');
+    '''
+    
+    I have here the line that you can see on line 19 of app.js
+    but for me it points to my API nodejs server. So when 
+    the front end does any RESTful commands it will send to this
+    base url. If for example you are sending to your api you 
+    would place your api url there and change the port to the port
+    you set in setup.js. You could call this file server.js or 
+    index.js or any file name you would like an drun by using
+    $ node <yourFileName>
+    
+    [Imgur](http://i.imgur.com/kzC4uhJ.png?1)
+    
+---------------------------------------------------------
+##### Extras
+=========================================================
 
-Once the server is running, open the project in the shape of 'https://projectname-username.c9.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+    Currently with this build 6.22.2016 you will get an 
+    error on the video view page where the video shows 
+    up. This is because google is sending the error so
+    don't worry they are actually supposed to fix the 
+    issue soon. "apparently"
+    
+    

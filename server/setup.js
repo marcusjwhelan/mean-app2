@@ -39,6 +39,9 @@ app.use('/hello', function(req,res,next){
 
 // Connect to MongoDB
 // on server. localhost would be url of that server/ database name
+// On cloud 9 you can get the number used 27017 when you run 
+// ./mongod . and the name at the end is the name of your db.
+// you can create a database using mongo --> use <name>
 mongoose.connect('mongodb://localhost:27017/mean-app2');
 mongoose.connection.once('open', function(){
     
