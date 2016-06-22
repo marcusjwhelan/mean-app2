@@ -1,12 +1,12 @@
 # mean-app1
 -------------------------------------------------------
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=OhPFgqHz68o
-" target="_blank"><img src="http://img.youtube.com/vi/OhPFgqHz68o/0.jpg" 
-alt="Tutorial" width="240" height="180" border="10" /></a>
+<a href="https://www.youtube.com/watch?v=OhPFgqHz68o
+" target="_blank"><img src="https://img.youtube.com/vi/OhPFgqHz68o/0.jpg" 
+alt="Tutorial" width="660" height="360" border="10" /></a>
 
 #### Description 
-=======================================================
+---------------------------------------------------------
 
     This project is actually from a youtube video going
     over the uses of angular and yeoman to produce a 
@@ -26,11 +26,11 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     
 ---------------------------------------------------------
 ##### Cloud 9 Setup
-=========================================================
+---------------------------------------------------------
 
     To make an account an see options or login visit
     
-    [Cloud9](https://c9.io/)
+    https://c9.io/
     
     Once you have created an account go to your profile
     page and select (+)Create a new workspace. On this 
@@ -65,7 +65,7 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     
 ---------------------------------------------------------
 ##### Setting up your remote connection to your Github
-=========================================================
+---------------------------------------------------------
     
     You can fallow the steps at githubt but to make it 
     easier I have the steps here. 
@@ -129,7 +129,7 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     
 ---------------------------------------------------------
 ##### Setting up the Server API
-=========================================================
+---------------------------------------------------------
 
     In your main empy workpspace folder.
     
@@ -183,7 +183,7 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     loaded in setup.js under the dependency injection. 
     
 ###### Running the server
-=========================================================
+---------------------------------------------------------
     workspace/
     
     $ ./mongod
@@ -203,7 +203,7 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     
 ---------------------------------------------------------
 ##### Setting up fornt end with Yeoman
-=========================================================
+---------------------------------------------------------
     
     workspace/
     Move to the main workspace folder. Don't for get to 
@@ -252,7 +252,7 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
 
 ---------------------------------------------------------
 ##### Building the front end to talk to the api
-=========================================================
+---------------------------------------------------------
 
     '''
     $ yo angular:route movies
@@ -300,11 +300,11 @@ alt="Tutorial" width="240" height="180" border="10" /></a>
     index.js or any file name you would like an drun by using
     $ node <yourFileName>
     
-    [Imgur](http://i.imgur.com/kzC4uhJ.png?1)
+    ![screenshot](http://i.imgur.com/kzC4uhJ.png?1)
     
 ---------------------------------------------------------
 ##### Extras
-=========================================================
+---------------------------------------------------------
 
     Currently with this build 6.22.2016 you will get an 
     error on the video view page where the video shows 
