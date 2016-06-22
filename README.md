@@ -30,7 +30,7 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
 
     To make an account an see options or login visit
     
-    https://c9.io/
+[Cloud9](https://c9.io/)
     
     Once you have created an account go to your profile
     page and select (+)Create a new workspace. On this 
@@ -48,17 +48,17 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     If you would like you can choose a nodejs template but 
     you will have to update it.
     
-    '''
-    $ sudo apt-get install nodejs
-    $ sudo apt-get install npm
-    $ sudo npm install -g grunt-cli
-    $ sudo npm install -g bower
-    '''
+'''bash
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ sudo npm install -g grunt-cli
+$ sudo npm install -g bower
+'''
     
     Also need to install mongodb. Fallow the instructions
     at mongodb to install for your system.
     
-    [mongodb](https://www.mongodb.com/download-center#community)
+[mongodb](https://www.mongodb.com/download-center#community)
     
     I will show how to install mongodb for c9 during the 
     server setup.
@@ -74,40 +74,40 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
 =========================================================
     In the main workspace folder or in the server folder.
     
-    '''
-    $ mkdir data 
-    $ echo 'mongod --bind_ip=$IP --dbpath=data 
-        --nojournal --rest "$@"' > mongod
-    $ chmod a+x mongod
-    '''
+'''bash
+$ mkdir data 
+$ echo 'mongod --bind_ip=$IP --dbpath=data 
+    --nojournal --rest "$@"' > mongod
+$ chmod a+x mongod
+'''
     
     Now in the file you added this too you can run 
     
-    '''
-    $ ./mongod 
-    '''
+'''bash
+$ ./mongod 
+'''
      to run mongodb. This is for Cloud9 only. not for a 
      production server. Anyway if you turn off your project
      without turning off mongod you will need to run 
      ./mongod --repair before you can use mongodb again. 
      
-     '''
-     $ mongo
-     '''
+ '''bash
+ $ mongo
+ '''
      
      To use the mongo shell and create databases and 
      tables. You can see these with 
      
-     '''
-     > mongo
-     > show databases
-     // shows databses 
-     > use <dbname>
-     > show tables
-     // shows table <name>s
-     > db.<name>.find({})
-     // displays everything in that database.
-     '''
+ '''bash
+ > mongo
+ > show databases
+ // shows databses 
+ > use <dbname>
+ > show tables
+ // shows table <name>s
+ > db.<name>.find({})
+ // displays everything in that database.
+ '''
      
 =========================================================
     
@@ -116,16 +116,16 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     need to setup a github repository matching the name
     of this workpsace folder. 
     
-    '''
-    $ sudo apt-get git
-    $ git config --global user.name "your name"
-    $ git config --global user.email "your email"
-    $ git init
-    $ git remote add origin git@github.com:yourname/yourrepository.git
-    $ git add . 
-    $ git commit -m "commit comment"
-    $ git push origin -u origin master
-    '''
+'''bash
+$ sudo apt-get git
+$ git config --global user.name "your name"
+$ git config --global user.email "your email"
+$ git init
+$ git remote add origin git@github.com:yourname/yourrepository.git
+$ git add . 
+$ git commit -m "commit comment"
+$ git push origin -u origin master
+'''
     
 ---------------------------------------------------------
 ##### Setting up the Server API
@@ -133,11 +133,11 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
 
     In your main empy workpspace folder.
     
-    '''
-    $ mkdir server
-    $ cd server
-    $ npm init
-    '''
+'''bash
+$ mkdir server
+$ cd server
+$ npm init
+'''
     
     After the init fallow the simple steps if you dont know
     anything about the steps just enter all the way through.
@@ -146,14 +146,14 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     Now install needed node modules for project. --save adds
     these to the package.json file.
     
-    '''
-    $ sudo npm install --save express
-    $ sudo npm install --save mongoose
-    $ sudo npm install --save node-restful
-    $ sudo npm install --save method-override
-    $ sudo npm install --save body-parser
-    $ sudo npm install --save lodash
-    '''
+'''bash
+$ sudo npm install --save express
+$ sudo npm install --save mongoose
+$ sudo npm install --save node-restful
+$ sudo npm install --save method-override
+$ sudo npm install --save body-parser
+$ sudo npm install --save lodash
+'''
     /server/setup.js
     Now we need to add an node startup file to launch 
     the server. Right click the server file and add
@@ -185,13 +185,13 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
 ###### Running the server
 ---------------------------------------------------------
     workspace/
-    
-    $ ./mongod
-    
+'''bash
+$ ./mongod
+'''
     /server
-    
-    $ node setup
-    
+'''bash
+$ node setup
+'''
     There will be nothing at the site because this is only 
     the api. Although you can test the api by using postman.
     url/movie 
@@ -209,18 +209,18 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     Move to the main workspace folder. Don't for get to 
     update npm to more recent version before these steps.
     
-    '''
-    $ mkdir client
-    $ cd client
-    $ sudo npm install -g yo
-    ERROR
-    $ yo doctor 
-    $ echo "export NODE_PATH=$NODE_PATH:
-        /home/ubuntu/.nvm/versions/node/v4.4.5/lib/node_modules" 
-        >> ~/.bashrc && source ~/.bashrc
-    $ sudo npm install -g generator-karma generator-angular
-    $ yo angular
-    
+'''bash
+$ mkdir client
+$ cd client
+$ sudo npm install -g yo
+ERROR
+$ yo doctor 
+$ echo "export NODE_PATH=$NODE_PATH:
+    /home/ubuntu/.nvm/versions/node/v4.4.5/lib/node_modules" 
+    >> ~/.bashrc && source ~/.bashrc
+$ sudo npm install -g generator-karma generator-angular
+$ yo angular
+'''
     answers for this project 
     
     yes all the way through to selecting angular includes
@@ -237,26 +237,29 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
 ###### To run the entire project
 ---------------------------------------------------------
     /
-    
-    $ ./mongod
+'''bash
+$ ./mongod
+'''
 ---------------------------------------------------------
     /server
-    
-    $ node setup  
+'''bash
+$ node setup  
+'''
 ---------------------------------------------------------
     /client
     Set the localhost to the api if you are running the
     api on the same server. 
     
-    $ grunt serve --proxy=http://localhost:8081
-
+'''bash
+$ grunt serve --proxy=http://localhost:8081
+'''
 ---------------------------------------------------------
 ##### Building the front end to talk to the api
 ---------------------------------------------------------
 
-    '''
-    $ yo angular:route movies
-    '''
+'''bash
+$ yo angular:route movies
+'''
     
     This creates a controller, route, and view of movies.
     The route is created and viewable in 
@@ -277,9 +280,9 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     -- moving ahead
     
     /client
-    '''
-    $ bower install --save restangular
-    '''
+'''bash
+$ bower install --save restangular
+'''
     
     This will save restangular right into the index.html 
     file. To add this file you need to add to app.js in
@@ -287,9 +290,9 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     
     In the app.js file you need to create a base url 
     
-    '''
-    RestangularProvider.setBaseUrl('<yourURL>:8081');
-    '''
+'''javascript
+RestangularProvider.setBaseUrl('<yourURL>:8081');
+'''
     
     I have here the line that you can see on line 19 of app.js
     but for me it points to my API nodejs server. So when 
@@ -300,7 +303,7 @@ alt="Tutorial" width="660" height="360" border="10" /></a>
     index.js or any file name you would like an drun by using
     $ node <yourFileName>
     
-    ![screenshot](http://i.imgur.com/kzC4uhJ.png?1)
+![screensho](http://i.imgur.com/kzC4uhJ.png)
     
 ---------------------------------------------------------
 ##### Extras
