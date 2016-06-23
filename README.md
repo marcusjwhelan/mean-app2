@@ -70,47 +70,6 @@ $ sudo npm install -g bower
     You can fallow the steps at githubt but to make it 
     easier I have the steps here. 
     
-###### Adding mongodb to Cloud 9
-=========================================================
-    In the main workspace folder or in the server folder.
-    
-```bash
-$ mkdir data 
-$ echo 'mongod --bind_ip=$IP --dbpath=data 
-    --nojournal --rest "$@"' > mongod
-$ chmod a+x mongod
-```
-    
-    Now in the file you added this too you can run 
-    
-```bash
-$ ./mongod 
-```
-     to run mongodb. This is for Cloud9 only. not for a 
-     production server. Anyway if you turn off your project
-     without turning off mongod you will need to run 
-     ./mongod --repair before you can use mongodb again. 
-     
-```bash
-$ mongo
-```
-     
-     To use the mongo shell and create databases and 
-     tables. You can see these with 
-     
-```bash
-> mongo
-> show databases
-// shows databses 
-> use <dbname>
-> show tables
-// shows table <name>s
-> db.<name>.find({})
-// displays everything in that database.
-```
- 
-=========================================================
-    
     In your main workspace you should have no files at 
     this time unless you toggle hidden files. You will 
     need to setup a github repository matching the name
@@ -181,6 +140,47 @@ $ sudo npm install --save lodash
     Create this file. Here we assign moviecontroller to 
     the movie path in our application. Routes file is
     loaded in setup.js under the dependency injection. 
+    
+###### Adding mongodb to Cloud 9
+=========================================================
+    In the main workspace folder or in the server folder.
+    
+```bash
+$ mkdir data 
+$ echo 'mongod --bind_ip=$IP --dbpath=data 
+    --nojournal --rest "$@"' > mongod
+$ chmod a+x mongod
+```
+    
+    Now in the file you added this too you can run 
+    
+```bash
+$ ./mongod 
+```
+     to run mongodb. This is for Cloud9 only. not for a 
+     production server. Anyway if you turn off your project
+     without turning off mongod you will need to run 
+     ./mongod --repair before you can use mongodb again. 
+     
+```bash
+$ mongo
+```
+     
+     To use the mongo shell and create databases and 
+     tables. You can see these with 
+     
+```bash
+> mongo
+> show databases
+// shows databses 
+> use <dbname>
+> show tables
+// shows table <name>s
+> db.<name>.find({})
+// displays everything in that database.
+```
+ 
+=========================================================
     
 ###### Running the server
 ---------------------------------------------------------
