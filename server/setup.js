@@ -14,6 +14,9 @@ var app = express();
 // Port for cloud environments.
 //var port = process.env.PORT;
 var port = 8081;
+
+app.use(express.static(__dirname + '/public'));
+
 // add middleware necassary for REST API's 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

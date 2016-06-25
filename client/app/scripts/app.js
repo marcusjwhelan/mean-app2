@@ -96,9 +96,8 @@ angular
     return function(url) {
       if(url){
         // either work
-        //return $sce.trustAsResourceUrl(url.replace("watch?v=","embed/"));
-        return $sce.trustAsResourceUrl(
-          "https://youtube.com/embed/"+url.substr(url.indexOf("=")+1));
+        return $sce.trustAsResourceUrl(url.replace("watch?v=","embed/"));
+        //return $sce.trustAsResourceUrl("https://youtube.com/embed/",url.substr(url.indexOf("=")+1));
       }
     };
   });
