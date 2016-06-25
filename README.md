@@ -245,14 +245,19 @@ $ ./mongod
 ```bash
 $ node setup  
 ```
+This will be running on port 8081 since we set it to that
+in setup.js
 ---------------------------------------------------------
     /client
     Set the localhost to the api if you are running the
     api on the same server. 
     
 ```bash
-$ grunt serve --proxy=http://localhost:8081
+$ grunt serve 
 ```
+No need to proxy since we set port to 8081 on setup.
+However when I did the same thing with an ember app 
+I did need to proxy my ember front end and node server.
 ---------------------------------------------------------
 ##### Building the front end to talk to the api
 ---------------------------------------------------------
