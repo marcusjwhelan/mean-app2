@@ -312,7 +312,50 @@ RestangularProvider.setBaseUrl('<yourURL>:8081');
     
 ![screenshot](http://i.imgur.com/kzC4uhJ.png)
     
+
+### Production build of the app. 
 ---------------------------------------------------------
+    So it is not in the video but I learned this from making
+    another app. in the /server file 
+```bash
+mkdir public
+cd ..
+cd client
+grunt build 
+grunt
+```
+    If you get en warning with grunt build like I did it
+    might not be an app breaking warning mine was not so I
+    used
+```bash
+grunt --force
+```
+    Now in /client/dist you will see the production build of 
+    your app. I am not sure how to build into an external file
+    with angular but I can with Ember. So copy all the contents
+    of /client/dist 
+    
+    Now go to /server/public and paste all the dist files there. 
+    In your setup.js file add the line 
+```javascript
+app.use(express.static(__dirname + '/public'));
+```
+    This will direct your server to use there files and now you 
+    no longer need to run grunt serve on the front end to see 
+    you app. All that needs to be done to view the app is to use
+```bash
+node setup
+```
+    In the /server directory. You will still have to use the 
+    :8081 since that is what I have it set to in my github but
+    if however you would like to just use the normal url 
+```javascript
+var port = process.env.PORT;
+```
+    Should work just fine. And their you have it. I will update 
+    this Readme later to show how to deploy to a cloud server.
+    6.26.16
+    
 ##### Extras
 ---------------------------------------------------------
 
