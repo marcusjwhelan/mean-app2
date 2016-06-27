@@ -76,11 +76,9 @@ $ sudo npm install -g bower
     of this workpsace folder. 
     
 ```bash
-$ sudo apt-get git
-$ git config --global user.name "your name"
-$ git config --global user.email "your email"
+$ sudo apt-get install git
 $ git init
-$ git remote add origin git@github.com:yourname/yourrepository.git
+$ git remote add origin https://github.com/<username>/<repo-name>.git
 $ git add . 
 $ git commit -m "commit comment"
 $ git push origin -u origin master
